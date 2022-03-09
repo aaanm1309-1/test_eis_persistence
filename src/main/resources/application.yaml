@@ -1,0 +1,44 @@
+server:
+  port: 8083
+
+astra:
+  application-token: AstraCS:EjEcQzKBMUltOMdaypCMYYFa:6bdfd4eee6c27445f4bee151faa77ae70922c4d64819ba312040216933255c3b
+  database-id: 826d5889-2fbf-46d4-b320-c04ead0f74b5
+  database-region: us-east1
+  keyspace: firstkeyspace
+
+spring:
+  data:
+    cassandra:
+      schema-action: CREATE_IF_NOT_EXISTS
+      request:
+        timeout: 10s
+      connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+      keyspace-name: keyspace
+      username: todouser
+      password: todo_password1
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  devtools:
+    add-properties: true
+
+#datastax:
+#  astra:
+#    secure-connect-bundle: /tmp/creds.zip
+
+springdoc:
+  api-docs:
+    enabled: true
+    groups:
+      enabled: true
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+  group-configs[0]:
+    group: Rest Controllers (Spring MVC)
+    packages-to-scan: com.datastax.workshop
+
+
