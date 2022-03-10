@@ -22,6 +22,7 @@ public class WordEntity {
     @CassandraType(type = CassandraType.Name.UUID)
     private UUID uid;
 
+    @Indexed
     @Column(COLUMN_SENTENCE)
     @CassandraType(type = CassandraType.Name.TEXT)
     private String wordSentence;

@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -42,7 +43,7 @@ public class WordController {
     @GetMapping
     public Stream<WordDTO> findAll(HttpServletRequest req) {
         return repo.findAll().stream()
-                .map(WordController::mapAsTodo)
+                .map(WordController::mapAsWord)
 //                .map(w -> w.setUrl(req))
                 ;
     }
@@ -53,15 +54,18 @@ public class WordController {
         if (e.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(mapAsTodo(e.get()));
+        return ResponseEntity.ok(mapAsWord(e.get()));
     }
 
-//    @PostConstruct
-//    public void insertWordsTest() {
-//        repo.save(new WordEntity("Palavra 1"));
-//        repo.save(new WordEntity("Palavra 2"));
-//        repo.save(new WordEntity("Palavra 3"));
-//    }
+    @GetMapping("/word/{wordFind}")
+    public ResponseEntity<List<Optional<WordEntity>>> findByWord(HttpServletRequest req, @PathVariable(value = "wordFind") String wordFind) {
+        List<Optional<WordEntity>> e = repo.findByWordSentence(wordFind);
+        if (e.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(e);
+//        return ResponseEntity.ok(mapAsWord(e.get()));
+    }
 
     @PostMapping
     public ResponseEntity<WordDTO> create(HttpServletRequest req, @RequestBody WordDTO wordReq)
@@ -99,7 +103,7 @@ public class WordController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    private static WordDTO mapAsTodo(WordEntity we) {
+    private static WordDTO mapAsWord(WordEntity we) {
         WordDTO word = new WordDTO();
         word.setWord(we.getWordSentence());
         word.setUuid(we.getUid());

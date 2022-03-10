@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "873ed63c-afff-4139-b742-5b870240660f",
+		"name": "TestEis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Words",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/words?word=jose",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"words"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "jose"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Words from Cassandra",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/words/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"words",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Words from Cassandra",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/words/f2b0a7f6-6cfa-4260-bc22-73b762f8d2f6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"words",
+						"f2b0a7f6-6cfa-4260-bc22-73b762f8d2f6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Words UUID from Cassandra",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/words/34d524fd-d3be-4cc5-9ddb-7375e4dfeee4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"words",
+						"34d524fd-d3be-4cc5-9ddb-7375e4dfeee4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Words with Specific Word from Cassandra Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/words/word/elissandragiovanna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"words",
+						"word",
+						"elissandragiovanna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Word in Cassandra",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"word\": \"teste123\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/words/adriano%20novo%20beleza%20bebe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"words",
+						"adriano%20novo%20beleza%20bebe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
